@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PortfolioApp</string>
+    <string name="app_name">Portfolio App</string>
+    <string name="profile_picture">Foto de perfil</string>
+    <string name="default_profile_picture">Foto de perfil por defecto</string>
+    <string name="about_me">Sobre Mí</string>
+    <string name="experience">Experiencia</string>
+    <string name="projects">Proyectos Destacados</string>
+    <string name="skills">Habilidades</string>
+    <string name="contact">Contacto</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="loading_image">Cargando imagen...</string>
+    <string name="error_loading_image">Error al cargar la imagen</string>
+    <string name="contact_icon">Icono de contacto</string>
 </resources>
