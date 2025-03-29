@@ -6,6 +6,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -102,7 +103,8 @@ fun PortfolioScreen(
                             launcher.launch("image/*") 
                         },
                     shape = CircleShape,
-                    color = MaterialTheme.colorScheme.surface
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(2.dp, titleColor)
                 ) {
                     Box(
                         modifier = Modifier
@@ -125,14 +127,13 @@ fun PortfolioScreen(
                                 contentScale = ContentScale.Crop
                             )
                         } else {
-                            Image(
-                                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                            Icon(
+                                painter = painterResource(id = R.drawable.default_profile),
                                 contentDescription = stringResource(R.string.default_profile_picture),
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(24.dp),
-                                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)),
-                                contentScale = ContentScale.Fit
+                                    .size(100.dp)
+                                    .padding(8.dp),
+                                tint = titleColor
                             )
                         }
                     }
@@ -140,7 +141,7 @@ fun PortfolioScreen(
 
                 // Información personal
                 Text(
-                    text = "Juan Carlos Rodríguez",
+                    text = "Prestes Ezequiel",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                     color = titleColor,
@@ -148,7 +149,7 @@ fun PortfolioScreen(
                 )
 
                 Text(
-                    text = "Desarrollador Android Senior",
+                    text = "Innovación y Desarrollo Web",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(bottom = 16.dp)
@@ -184,48 +185,7 @@ fun PortfolioScreen(
                             )
                         }
                         Text(
-                            text = "Desarrollador Android con más de 5 años de experiencia en el desarrollo de aplicaciones móviles. Especializado en Kotlin y Jetpack Compose, con un fuerte enfoque en la arquitectura limpia y las mejores prácticas de desarrollo.",
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                    }
-                }
-
-                // Sección Experiencia
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surface
-                    )
-                ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = null,
-                                tint = titleColor,
-                                modifier = Modifier.padding(end = 8.dp)
-                            )
-                            Text(
-                                text = "Experiencia",
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold,
-                                color = titleColor
-                            )
-                        }
-                        Text(
-                            text = "• TechCorp (2020 - Presente)\n  - Líder del equipo de desarrollo Android\n  - Implementación de arquitectura MVVM\n  - Desarrollo de aplicaciones con más de 1M de descargas",
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "• MobileDev Solutions (2018 - 2020)\n  - Desarrollador Android Senior\n  - Implementación de nuevas características\n  - Optimización de rendimiento",
+                            text = "Soy estudiante de la tecnicatura en Gestion de Programación e Innovación Tencológica y Digital. Me considero una persona amable, responsable y ordenada. Me gustan los desafíos y proponerme metas para poder mejorar como persona. Estoy dispuesto a adquirir nuevos conocimientos y capacidades útiles para mi carrera como profesional.",
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }
@@ -254,7 +214,7 @@ fun PortfolioScreen(
                                 modifier = Modifier.padding(end = 8.dp)
                             )
                             Text(
-                                text = "Proyectos Destacados",
+                                text = "Proyectos",
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.Bold,
                                 color = titleColor
@@ -285,33 +245,22 @@ fun PortfolioScreen(
                                         modifier = Modifier.padding(end = 8.dp)
                                     )
                                     Text(
-                                        text = "EcoTrack App",
+                                        text = "Agenda y Tareas",
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.Bold,
                                         color = titleColor
                                     )
                                 }
                                 Text(
-                                    text = "Aplicación de seguimiento de huella de carbono",
+                                    text = "Gestor de agenda y tareas web que cuenta con un sistema de inicio de sesión",
                                     style = MaterialTheme.typography.bodyLarge,
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.padding(top = 8.dp)
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.AccountCircle,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(16.dp)
-                                    )
-                                    Text(
-                                        text = " 100k+ descargas",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                }
+                                Text(
+                                    text = "Tecnologías: Python, Django, SQLite, Render",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
                             }
                         }
 
@@ -339,33 +288,22 @@ fun PortfolioScreen(
                                         modifier = Modifier.padding(end = 8.dp)
                                     )
                                     Text(
-                                        text = "SmartHome Hub",
+                                        text = "Finanzas Plus",
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.Bold,
                                         color = titleColor
                                     )
                                 }
                                 Text(
-                                    text = "Control centralizado de dispositivos IoT",
+                                    text = "Una aplicación móvil para gestionar las finanzas personales",
                                     style = MaterialTheme.typography.bodyLarge,
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.padding(top = 8.dp)
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.AccountCircle,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(16.dp)
-                                    )
-                                    Text(
-                                        text = " Integración con múltiples protocolos",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                }
+                                Text(
+                                    text = "Tecnologías: HTML, CSS, JavaScript",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
                             }
                         }
 
@@ -393,33 +331,22 @@ fun PortfolioScreen(
                                         modifier = Modifier.padding(end = 8.dp)
                                     )
                                     Text(
-                                        text = "Fitness Tracker Pro",
+                                        text = "Agenda electrónica",
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.Bold,
                                         color = titleColor
                                     )
                                 }
                                 Text(
-                                    text = "Seguimiento de actividad física",
+                                    text = "Una agenda que permite cargar hasta 10 tareas a realizar con la posibilidad de generar un txt",
                                     style = MaterialTheme.typography.bodyLarge,
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.padding(top = 8.dp)
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.AccountCircle,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(16.dp)
-                                    )
-                                    Text(
-                                        text = " 500k+ descargas",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                }
+                                Text(
+                                    text = "Tecnologías: Java, NetBeans",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
                             }
                         }
                     }
@@ -455,13 +382,13 @@ fun PortfolioScreen(
                             )
                         }
                         Text(
-                            text = "• Kotlin\n• Jetpack Compose\n• MVVM Architecture\n• Clean Architecture\n• Git\n• Firebase\n• Material Design 3\n• Unit Testing\n• CI/CD",
+                            text = "• HTML5\n• CSS3\n• Bootstrap\n• Python\n• Django\n• JavaScript\n• Java\n• MySQL\n• SQLite\n• Git\n• GitHub",
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }
                 }
 
-                // Sección Contacto mejorada
+                // Sección Contacto
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -493,42 +420,32 @@ fun PortfolioScreen(
                         
                         ContactItem(
                             icon = Icons.Default.Email,
-                            text = "juan.rodriguez@email.com",
+                            text = "prestes.ezequiel@email.com",
                             onClick = {
                                 val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
-                                    data = "mailto:juan.rodriguez@email.com".toUri()
+                                    data = "mailto:prestes.ezequiel@email.com".toUri()
                                 }
                                 context.startActivity(emailIntent)
                             }
                         )
                         ContactItem(
                             icon = Icons.Default.Share,
-                            text = "linkedin.com/in/juanrodriguez",
+                            text = "linkedin.com/in/prestes-ezequiel",
                             onClick = {
                                 val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                    data = "https://linkedin.com/in/juanrodriguez".toUri()
+                                    data = "https://linkedin.com/in/prestes-ezequiel".toUri()
                                 }
                                 context.startActivity(webIntent)
                             }
                         )
                         ContactItem(
                             icon = Icons.Default.Menu,
-                            text = "github.com/juanrodriguez",
+                            text = "github.com/prestes28",
                             onClick = {
                                 val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                    data = "https://github.com/juanrodriguez".toUri()
+                                    data = "https://github.com/prestes28".toUri()
                                 }
                                 context.startActivity(webIntent)
-                            }
-                        )
-                        ContactItem(
-                            icon = Icons.Default.Phone,
-                            text = "+34 123 456 789",
-                            onClick = {
-                                val dialIntent = Intent(Intent.ACTION_DIAL).apply {
-                                    data = "tel:+34123456789".toUri()
-                                }
-                                context.startActivity(dialIntent)
                             }
                         )
                     }
