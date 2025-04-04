@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.portfolioapp.ui.screens.LoginScreen
 import com.example.portfolioapp.ui.screens.PortfolioScreen
 import com.example.portfolioapp.ui.theme.PortfolioAppTheme
+import com.example.portfolioapp.ui.theme.ThemeManager
 
 @OptIn(ExperimentalAnimationApi::class)
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PortfolioAppTheme {
+            val themeState = ThemeManager.themeState
+            
+            PortfolioAppTheme(darkTheme = themeState.isDarkMode) {
                 var isLoggedIn by remember { mutableStateOf(false) }
                 val density = LocalDensity.current
 

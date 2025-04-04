@@ -24,6 +24,9 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -41,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.portfolioapp.R
+import com.example.portfolioapp.ui.theme.ThemeManager
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,17 +67,31 @@ fun PortfolioScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Mi Portfolio") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary
-                ),
-                actions = {
+                title = { Text("Portfolio") },
+                navigationIcon = {
                     IconButton(onClick = onLogout) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Cerrar sesión")
+                    }
+                },
+                actions = {
+                    // Switch de tema
+                    Row(
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                            .align(Alignment.CenterVertically),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ExitToApp,
-                            contentDescription = stringResource(R.string.logout),
-                            tint = MaterialTheme.colorScheme.onPrimary
+                            imageVector = if (ThemeManager.themeState.isDarkMode) 
+                                Icons.Default.LightMode 
+                            else 
+                                Icons.Default.DarkMode,
+                            contentDescription = "Cambiar tema",
+                            modifier = Modifier.padding(end = 8.dp)
+                        )
+                        Switch(
+                            checked = ThemeManager.themeState.isDarkMode,
+                            onCheckedChange = { ThemeManager.toggleTheme() }
                         )
                     }
                 }
@@ -433,7 +451,7 @@ fun PortfolioScreen(
                             text = "linkedin.com/in/prestes-ezequiel",
                             onClick = {
                                 val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                    data = "https://linkedin.com/in/prestes-ezequiel".toUri()
+                                    data = "https://www.linkedin.com/in/ezequiel-prestes-b27246273/".toUri()
                                 }
                                 context.startActivity(webIntent)
                             }
