@@ -420,10 +420,10 @@ fun PortfolioScreen(
                         
                         ContactItem(
                             icon = Icons.Default.Email,
-                            text = "prestes.ezequiel@email.com",
+                            text = "ezeprestes28@email.com",
                             onClick = {
                                 val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
-                                    data = "mailto:prestes.ezequiel@email.com".toUri()
+                                    data = "mailto:ezeprestes28@email.com".toUri()
                                 }
                                 context.startActivity(emailIntent)
                             }

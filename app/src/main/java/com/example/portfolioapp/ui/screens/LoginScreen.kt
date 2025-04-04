@@ -1,10 +1,15 @@
 package com.example.portfolioapp.ui.screens
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -15,6 +20,18 @@ fun LoginScreen(
 ) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    
+    // Animación de rotación
+    val infiniteTransition = rememberInfiniteTransition(label = "infinite_rotation")
+    val rotation by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(2000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "rotation"
+    )
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -27,6 +44,23 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            // Icono animado
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(bottom = 16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Login Icon",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .rotate(rotation),
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+
             Text(
                 text = "PortfolioAPP",
                 style = MaterialTheme.typography.headlineLarge,
